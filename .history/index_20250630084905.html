@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGZ SARL - Leader en Connectivité Haut Débit au Bénin</title>
+    <meta name="description" content="Fournisseur d'accès Internet 4G/5G, Fibre Optique et solutions VSAT au Bénin">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .visually-hidden {
+            position: absolute !important;
+            height: 1px; width: 1px;
+            overflow: hidden;
+            clip: rect(1px, 1px, 1px, 1px);
+            white-space: nowrap;
+        }
+        
+        /* Correction responsive ajoutée */
+        body {
+            padding-top: 80px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo-container">
+                    <img src="RGZ.jpg" alt="RGZ SARL Logo" class="logo" width="50" height="40">
+                    <span class="logo-text">RGZ SARL</span>
+                </div>
+
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active">Accueil</a></li>
+                    <li><a href="#about" class="nav-link">À Propos</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#pricing" class="nav-link">Tarifs</a></li>
+                    <li><a href="#testimonials" class="nav-link">Partenaires</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="nosoffres.html" class="btn btn-outline">Nos offres</a></li>
+                </ul>
+                
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+     <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-video">
+            <video autoplay muted loop playsinline webkit-playsinline poster="photo.png" width="640" height="360">
+                <source src="Whatsapp12.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="hero-title">Connectivité Haut Débit <span>pour le Bénin Digital</span></h1>
+                <p class="hero-subtitle">4G/5G Illimité • Fibre Optique • Solutions Entreprises • Fixe • VSAT</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="24641">0</span>
+                        <span class="stat-label">Clients satisfaits</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="49">0</span>
+                        <span class="stat-label">Couverture nationale</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="24">0</span>
+                        <span class="stat-label">Support 24/7</span>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#pricing" class="btn btn-primary">Nos Offres <i class="fas fa-chevron-right"></i></a>
+                    <a href="#contact" class="btn btn-outline">Contact Commercial</a>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#about" class="scroll-indicator">
+            <span>Explorer</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- Clients Marquee -->
+    <section class="clients-marquee">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <div class="client-logo"><img src="mtn-logo.png" alt="MTN" loading="lazy"></div>
+                <div class="client-logo"><img src="moov.png" alt="Moov" loading="lazy"></div>
+                <div class="client-logo"><img src="ZTE_logo.svg.png" alt="ZTE" loading="lazy"></div>
+                <div class="client-logo"><img src="Celtiis.jpg" alt="Celtiis" loading="lazy"></div>
+                <div class="client-logo"><img src="mobilewire.png" alt="Mobilewire" loading="lazy"></div>
+                <div class="client-logo"><img src="MEIG.avif" alt="MEIG" loading="lazy"></div>
+                <div class="client-logo"><img src="Tozed.png" alt="Tozed" loading="lazy"></div>
+                <div class="client-logo"><img src="innovasas.png" alt="innovasas" loading="lazy"></div>
+
+
+                <div class="client-logo"><img src="mtn-logo.png" alt="MTN" loading="lazy"></div>
+                <div class="client-logo"><img src="moov.png" alt="Moov" loading="lazy"></div>
+                <div class="client-logo"><img src="ZTE_logo.svg.png" alt="ZTE" loading="lazy"></div>
+                <div class="client-logo"><img src="Celtiis.jpg" alt="Celtiis" loading="lazy"></div>
+                <div class="client-logo"><img src="mobilewire.png" alt="Mobilewire" loading="lazy"></div>
+                <div class="client-logo"><img src="MEIG.avif" alt="MEIG" loading="lazy"></div>
+                <div class="client-logo"><img src="Tozed.png" alt="Tozed" loading="lazy"></div>
+                <div class="client-logo"><img src="innovasas.png" alt="innovasas" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Notre histoire</span>
+                <h2 class="section-title">L'innovation au service <span>de la connectivité</span></h2>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-content" data-aos="fade-right">
+                    <p class="about-text">Fondée en 2016, RGZ SARL est une société de distrubition au détail et en gros d'appareils de Connectivité à large bande et fournit des services de numérisation aux PME .</p>       
+                    <div class="about-mission">
+                        <h3><i class="fas fa-bullseye"></i> Notre Mission</h3>
+                        <p>Permettre la connectivité et la numérisation .
+                         Connecter les PME à leurs actifs via des appareils et des services numériques .
+
+                            Connecter les entreprises et foyers béninois avec des solutions Internet performantes, fiables et accessibles, tout en participant activement à la transformation numérique du pays .</p>
+                    </div>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Sécurité Maximale</h4>
+                            <p>Infrastructure protégée avec pare-feu de dernière génération .</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <h4>Performance</h4>
+                            <p>Débits garantis avec SLA 97.9% de disponibilité .</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image" data-aos="fade-left">
+                    <img src="Equipe.jpg" alt="Équipe RGZ" loading="lazy">
+                    <div class="experience-badge">
+                        <span class="years">10+</span>
+                        <span class="text">Ans d'expertise</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-timeline" data-aos="fade-up">
+                <div class="timeline-item">
+                    <div class="timeline-date">2016</div>
+                    <div class="timeline-content">
+                        <h4>Création de RGZ SARL</h4>
+                        <p>Lancement des premiers services haut débit à Cotonou 4G/5G .</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2023</div>
+                    <div class="timeline-content">
+                        <h4>Evaluation du plan de déploiement du réseau </h4>
+                        <p>Evaluer l'infrastructure disponible et definir un plan de déploiement du réseau .</p>
+                    </div><br><br>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h4>Déploiement du réseau </h4>
+                        <p>La mise en oeuvre du plan de déploiement du réseau en mettant l'accent sur les zones prioritaires Identifiées</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-content">
+                        <h4>Lacement pour le renforcement de l'experience client</h4>
+                        <p>Mettre en oeuvre des initiativess visant à améliorer l'experience client, telles que l'amélioration du suport client, la personnalisation des offres et l'automatisation des processus des services .</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Nos solutions</span>
+                <h2 class="section-title">Services de connectivité <span>haut de gamme</span></h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="service-image">
+                        <img src="5G.jpg" alt="4G/5G Illimité" loading="lazy">
+                    </div>
+                    <h3>4G/5G Illimité</h3>
+                    <p>Connectivité mobile ultra-rapide sans limitation de données avec couverture nationale</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Jusqu'à 150 Mbps</li>
+                        <li><i class="fas fa-check"></i> Forfaits adaptés</li>
+                        <li><i class="fas fa-check"></i> Support 24/7</li>
+                    </ul>
+                    <a href="#pricing" class="btn btn-small">Voir les offres <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="service-image">
+                        <img src="fibre-optique.jpg" alt="Fibre Optique" loading="lazy">
+                    </div>
+                    <h3>Fibre Optique</h3>
+                    <p>Internet ultra-rapide par fibre optique pour particuliers et entreprises</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Jusqu'à 1 Gbps</li>
+                        <li><i class="fas fa-check"></i> Installation professionnelle</li>
+                        <li><i class="fas fa-check"></i> Symétrique garanti</li>
+                    </ul>
+                    <a href="#pricing" class="btn btn-small">Voir les offres <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <div class="service-image">
+                        <img src="vsat.jpg" alt="VSAT" loading="lazy">
+                    </div>
+                    <h3>Solutions VSAT</h3>
+                    <p>Connectivité satellitaire pour zones reculées et besoins critiques</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Couverture nationale</li>
+                        <li><i class="fas fa-check"></i> Débits garantis</li>
+                        <li><i class="fas fa-check"></i> Solution clé en main</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-small">Demander un devis <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="service-image">
+                        <img src="solution.avif" alt="Solutions Entreprises" loading="lazy">
+                    </div>
+                    <h3>Solutions Entreprises</h3>
+                    <p>Connectivité dédiée avec SLA et support prioritaire pour professionnels</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Accès dédié</li>
+                        <li><i class="fas fa-check"></i> Sécurité renforcée</li>
+                        <li><i class="fas fa-check"></i> Gestion centralisée</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-small">Contact commercial <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="service-cta" data-aos="fade-up">
+                <p>Vous ne trouvez pas la solution adaptée à vos besoins ?</p>
+                <a href="#contact" class="btn btn-outline">Parlez à un expert</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Quelques offres</span>
+                <h2 class="section-title">Des tarifs compétitifs <span>pour tous les besoins</span></h2>
+            </div>
+            
+            <div class="pricing-tabs" data-aos="fade-up">
+                <button class="tab-btn active" data-tab="residential">HOME</button>
+                <button class="tab-btn" data-tab="business">Business</button>
+                <button class="tab-btn" data-tab="enterprise">Entreprises</button>
+            </div>
+            
+            <div class="pricing-content">
+                <div id="residential" class="tab-content active">
+                    <div class="pricing-grid">
+                        <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                            <h3>Essentiel</h3>
+                            <div class="price"><span>14 900</span> FCFA/mois</div>
+                            <ul class="features">
+                                <li><i class="fas fa-check"></i> 20 Mbps symétriques</li>
+                                <li><i class="fas fa-check"></i> Illimité</li>
+                                <li><i class="fas fa-check"></i> Wifi inclus</li>
+                                <li><i class="fas fa-check"></i> Support 8h-20h</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-small">Souscrire</a>
+                        </div>
+                        
+                        <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
+                            <div class="popular-tag">Le plus populaire</div>
+                            <h3>Confort</h3>
+                            <div class="price"><span>24 900</span> FCFA/mois</div>
+                            <ul class="features">
+                                <li><i class="fas fa-check"></i> 50 Mbps symétriques</li>
+                                <li><i class="fas fa-check"></i> Illimité</li>
+                                <li><i class="fas fa-check"></i> Wifi double bande</li>
+                                <li><i class="fas fa-check"></i> Support 24/7</li>
+                                <li><i class="fas fa-check"></i> TV IP incluse</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-primary">Souscrire</a>
+                        </div>
+                        
+                        <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                            <h3>Premium</h3>
+                            <div class="price"><span>39 900</span> FCFA/mois</div>
+                            <ul class="features">
+                                <li><i class="fas fa-check"></i> 70 Mbps symétriques</li>
+                                <li><i class="fas fa-check"></i> Illimité</li>
+                                <li><i class="fas fa-check"></i> Wifi Mesh</li>
+                                <li><i class="fas fa-check"></i> Support 24/7 prioritaire</li>
+                                <li><i class="fas fa-check"></i> TV IP + 3 appareils</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-small">Souscrire</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="business" class="tab-content">
+                    <div class="pricing-grid">
+                        <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                            <h3>Startup</h3>
+                            <div class="price"><span>24 900</span> FCFA/mois</div>
+                            <ul class="features">
+                                <li><i class="fas fa-check"></i> 50 Mbps garantis</li>
+                                <li><i class="fas fa-check"></i> 99.5% SLA</li>
+                                <li><i class="fas fa-check"></i> Routeur professionnel</li>
+                                <li><i class="fas fa-check"></i> Support 24/7</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-small">Souscrire</a>
+                        </div>
+                        
+                        <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
+                            <div class="popular-tag">Recommandé</div>
+                            <h3>Business</h3>
+                            <div class="price"><span>69 900</span> FCFA/mois</div>
+                            <ul class="features">
+                                <li><i class="fas fa-check"></i> 150 Mbps garantis</li>
+                                <li><i class="fas fa-check"></i> 99.9% SLA</li>
+                                <li><i class="fas fa-check"></i> Equipement haut de gamme</li>
+                                <li><i class="fas fa-check"></i> Support prioritaire</li>
+                                <li><i class="fas fa-check"></i> 5 IP fixes</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-primary">Souscrire</a>
+                        </div>
+                        
+                        <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                            <h3>Business+</h3>
+                            <div class="price"><span>99 900</span> FCFA/mois</div>
+                            <ul class="features">
+                                <li><i class="fas fa-check"></i> 200 Mbps garantis</li>
+                                <li><i class="fas fa-check"></i> 99.95% SLA</li>
+                                <li><i class="fas fa-check"></i> Solution redondée</li>
+                                <li><i class="fas fa-check"></i> Support dédié</li>
+                                <li><i class="fas fa-check"></i> 10 IP fixes + VPN</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-small">Souscrire</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="enterprise" class="tab-content">
+                    <div class="enterprise-content" data-aos="fade-up">
+                        <div class="enterprise-text">
+                            <h3>Solutions sur mesure pour entreprises</h3>
+                            <p>Nos solutions Enterprise sont conçues spécifiquement pour répondre aux besoins critiques des grandes organisations avec des exigences élevées en termes de disponibilité, sécurité et performance.</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Débits de 500 Mbps à 10 Gbps</li>
+                                <li><i class="fas fa-check-circle"></i> SLA jusqu'à 99.99%</li>
+                                <li><i class="fas fa-check-circle"></i> Solutions redondées multi-opérateurs</li>
+                                <li><i class="fas fa-check-circle"></i> Sécurité avancée (Firewall, DDoS)</li>
+                                <li><i class="fas fa-check-circle"></i> Ingénierie réseau sur mesure</li>
+                            </ul>
+                        </div>
+                        <div class="enterprise-form">
+                            <h4>Demander une étude personnalisée</h4>
+                            <form id="enterpriseForm">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Nom de l'entreprise" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" placeholder="Email professionnel" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" placeholder="Téléphone" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea placeholder="Décrivez vos besoins (sites, utilisateurs, applications critiques...)"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-notes" data-aos="fade-up">
+                <p><i class="fas fa-info-circle"></i> Tous nos abonnements incluent l'installation professionnelle et sont sans engagement. Taxes applicables en sus.</p>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Notre démarche</span>
+                <h2 class="section-title">Une approche client <span>en 4 étapes</span></h2>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Audit & Analyse</h3>
+                        <p> Identifier les sources de valeur stratégique pour les parties prenantes, analyser les tendances du secteur et leur impact sur le positionnement stratégique .</p>
+                    </div>
+                </div>
+                
+                <div class="process-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Solution sur mesure</h3>
+                        <p>Identifier les stratégies et tactiques efficaces pour atteindre les objectifs pertinents et renforcer l'avantage concurrentiel durable de l'organisation .</p>
+                    </div>
+                </div>
+                
+                <div class="process-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Déploiement</h3>
+                        <p>Identifier les segments de clientèle stratégiques rentables et développer un positionnement à long terme pour ces clients .</p>
+                    </div>
+                </div>
+                
+                <div class="process-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Support continu</h3>
+                        <p>Évaluer les principaux risques liés à la stratégie et élaborer des réponses appropriées pour assurer la stabilité et la croissance du business .</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Témoignages</span>
+                <h2 class="section-title">Ce que disent <span>nos partenaires</span></h2>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Nous sommes trés satisfait de notre collaboration et de la mise en oeuvre de nos differents projet !"</p>
+                    <div class="testimonial-author">
+                        <img src="Profil.jpg" alt="_____MTN" loading="lazy">
+                        <div class="author-info">
+                            <h4>MTN</h4>
+                            <span>Cotonou</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Notre partenariat avec RGZ a permis de developper notre présence stratégique sur le marché africain !"</p>
+                    <div class="testimonial-author">
+                        <img src="Profil.jpg" alt="_____Celtis" loading="lazy">
+                        <div class="author-info">
+                            <h4>DATA Technologie</h4>
+                            <span>Cotonou</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">"Le service était trés réactif, l'expertise certaine et la solution, adéquate .Merci à toute l'équipe !"</p>
+                    <div class="testimonial-author">
+                        <img src="Profil.jpg" alt="_____ZTE" loading="lazy">
+                        <div class="author-info">
+                            <h4>ZTE</h4>
+                            <span>Cotonou</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"RGZ est l'un de nos meilleurs partenares en Afrique de l'ouest, une entreprise trés dynamique>
+                    <div class="testimonial-author">
+                        <img src="Profil.jpg" alt="_____Moov" loading="lazy">
+                        <div class="author-info">
+                            <h4>Moov</h4>
+                            <span>Cotonou</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonials-cta" data-aos="fade-up">
+                <p>Vous souhaitez partager votre expérience avec RGZ ?</p>
+                <a href="Contact" class="btn btn-outline">Laisser un avis</a>
+            </div>
+        </div>
+    </section>
+
+
+
+<!-- Section FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Questions <span>Fréquentes</span></h2>
+                <p class="section-subtitle">Trouvez des réponses à vos questions sur nos services</p>
+            </div>
+            
+            <div class="faq-accordion">
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <span>Quelle est la couverture de RGZ SARL ?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>RGZ SARL couvre actuellement les principales villes béninoises dont Cotonou, Porto-Novo, Ouidah, Abomey-Calavi, Adjouhoun, Tchaourou, Djakotome etc..., avec des projets d'expansion en cours dans les zones périurbaines. Notre service VSAT est disponible dans tout le pays.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <span>Quel est le délai d'installation ?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Pour la fibre optique dans les zones couvertes, l'installation est généralement effectuée sous 3 à 5 jours ouvrables après souscription. Pour les autres technologies, le délai peut varier de 24h à 1 semaine selon votre localisation. Frais d'installation : 10,000 FCFA.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <span>Quelle est la politique de retour ?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Nous offrons une garantie satisfait de 30 jours. Si vous n'êtes pas satisfait de notre service pendant cette période, nous vous remboursons intégralement.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <span>Quels sont les moyens de paiement acceptés ?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Nous acceptons les paiements par carte bancaire, virement, Mobile Money (MTN, Moov et Celtis), ainsi qu'en espèces dans nos agences.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <span>Comment contacter le support technique ?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Notre support technique est disponible 24h/24 et 7j/7 au +229 01 62 00 00 62, ou via email à rgz@rgz.bj.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-btn">
+                        <span>Quelle est la différence entre la fibre et l'Internet fixe ?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>La fibre optique offre des débits bien supérieurs (jusqu'à 1Gbps) et une latence plus faible que l'Internet fixe classique. Cependant, l'Internet fixe est disponible dans plus de zones et peut être une bonne alternative lorsque la fibre n'est pas encore déployée.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-cta">
+                <p>Vous ne trouvez pas la réponse à votre question ?</p>
+                <a href="#contact" class="btn primary">Contactez notre support</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <!-- Contact CTA Section -->
+    <section class="contact-cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Prêt à transformer votre connectivité ?</h2>
+                <p>Notre équipe est disponible pour discuter de votre projet et vous proposer la solution optimale</p>
+                <div class="cta-buttons">
+                    <a href="tel:+2290162000062" class="btn btn-primary">
+                        <i class="fas fa-phone-alt"></i> +229 01 62 00 00 62
+                    </a>
+                    <a href="#contact" class="btn btn-outline">Formulaire de contact</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-info" data-aos="fade-left">
+                    <h3>Nos bureaux</h3>
+                    <p><i class="fas fa-map-marker-alt"></i>  N°937 Gbegamey 4-Etoile rouge<br>
+                        Cotonou, BENIN<br>
+                        03 BP 4154 Jéricho</p>
+                    <p><i class="fas fa-phone-alt"></i> +229 01 62 00 00 62 (Commercial)</p>
+                    <p><i class="fas fa-envelope"></i> rgz@rgz.bj</p>
+                    <p><i class="fas fa-clock"></i> Lun-Ven: 8h-18h | Sam: 9h-13h</p>
+                    <a href="#contact" class="btn btn-small">Prendre rendez-vous</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Contactez-nous</span>
+                <h2 class="section-title">Discutons de <span>votre projet</span></h2>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-form" data-aos="fade-right">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="service" class="visually-hidden">Service intéressé</label>
+                            <select id="service" required>
+                                <option value="">Service intéressé</option>
+                                <option value="4g">4G/5G Illimité</option>
+                                <option value="fibre">Fibre Optique</option>
+                                <option value="vsat">Solutions VSAT</option>
+                                <option value="business">Solutions Professionnelles</option>
+                                <option value="other">Autre demande</option>
+                            </select>
+                        </div>
+                            <select id="service" required>
+                                <option value="">Service intéressé</option>
+                                <option value="4g">4G/5G Illimité</option>
+                                <option value="fibre">Fibre Optique</option>
+                                <option value="vsat">Solutions VSAT</option>
+                                <option value="business">Solutions Professionnelles</option>
+                                <option value="other">Autre demande</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" placeholder="Décrivez votre besoin..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer le message <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div><br>
+                
+                <div class="contact-info" data-aos="fade-left">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Support Technique</h3>
+                            <p><i class="fas fa-phone-alt"></i> +229 01 66 97 94 31</p>
+                            <p><i class="fas fa-envelope"></i> constant@rgz.bj</p>
+                            <p><i class="fas fa-clock"></i> 24/7 toute l'année</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Service Commercial</h3>
+                            <p><i class="fas fa-phone-alt"></i> +229 01 62 00 00 62</p>
+                            <p><i class="fas fa-envelope"></i> rgz@rgz.bj</p>
+                            <p><i class="fas fa-clock"></i> Lun-Ven: 8h-18h</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Visitez nos bureaux</h3>
+                            <p><i class="fas fa-building"></i> N°937 Gbegamey 4-Etoile rouge <br>03 BP 4154 Jéricho</p>
+                            <p><i class="fas fa-city"></i> Cotonou, BENIN</p>
+                            <p><i class="fas fa-clock"></i> Sur rendez-vous</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content" data-aos="fade-up">
+                <div class="newsletter-text">
+                    <h3>Restez informés</h3>
+                    <p>Abonnez-vous à notre newsletter pour recevoir nos actualités, offres spéciales et conseils techniques.</p>
+                </div>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" placeholder="Votre email" required>
+                        <button type="submit" class="btn btn-primary">S'abonner</button>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="newsletterConsent" required>
+                        <label for="newsletterConsent">J'accepte de recevoir les communications de RGZ SARL</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <img src="RGZ.jpg" alt="RGZ SARL" class="footer-logo">
+                    <p>Leader des solutions de connectivité haut débit au Bénin, RGZ SARL fournit des services Internet innovants et fiables pour particuliers et professionnels.</p>
+                    <div class="social-links">
+                        <a href="https://web.facebook.com/rgz.connectivity/?_rdc=1&_rdr#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col footer-links">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="#home">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pricing">Tarifs</a></li>
+                        <li><a href="#about">À propos</a></li>
+                        <li><a href="#testimonials">Témoignages</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="nosoffres.html">Nos offres</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-services">
+                    <h3>Nos services</h3>
+                    <ul>
+                        <li><a href="#">Internet 4G/5G</a></li>
+                        <li><a href="#">Fibre Optique</a></li>
+                        <li><a href="#">Solutions VSAT</a></li>
+                        <li><a href="#">Connexion Entreprise</a></li>
+                        <li><a href="#">Téléphonie IP</a></li>
+                        <li><a href="#">Sécurité Réseau</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col footer-contact">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> N°937 Gbegamey 4-Etoile rouge<br>
+                        Cotonou, BENIN<br>
+                        03 BP 4154 Jéricho</li>
+                        <li><i class="fas fa-phone-alt"></i> +229 01 62 00 00 62</li>
+                        <li><i class="fas fa-envelope"></i> rgz@rgz.bj</li>
+                        <li><i class="fas fa-clock"></i> Lun-Ven: 8h-18h | Sam: 9h-13h</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 RGZ SARL. Tous droits réservés.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Conditions Générales</a>
+                    <a href="#">Politique de Confidentialité</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>

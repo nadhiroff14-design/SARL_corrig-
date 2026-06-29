@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGZ SARL - Espace Client</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ec1928;
+            --primary-dark: #ec1928;
+            --secondary-color: #ffffff;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --gray-color: #95a5a6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .client-header {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-dark));
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .client-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .client-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .client-logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .client-logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Main Content */
+        .client-main {
+            padding: 40px 0;
+        }
+
+        .client-welcome {
+            text-align: center;
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .client-welcome.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .client-welcome h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .client-welcome p {
+            font-size: 1.1rem;
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Pricing Tabs */
+        .client-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .client-tab-btn {
+            padding: 12px 30px;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .client-tab-btn.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .client-tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .client-tab-content.active {
+            display: block;
+        }
+
+        /* Pricing Tables */
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .pricing-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .pricing-speed {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .pricing-price {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-body {
+            padding: 25px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features li i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        .pricing-footer {
+            padding: 0 25px 25px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+        }
+
+        /* Modal (Promo) */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-overlay.active { display: flex; }
+
+        .modal {
+            background: #ffffff;
+            width: 90%;
+            max-width: 720px;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            overflow: hidden;
+            animation: fadeIn 0.2s ease;
+        }
+        .modal-header {
+            padding: 18px 24px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .modal-title { font-size: 1.25rem; font-weight: 700; }
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+        .modal-body { padding: 20px 24px; color: #333; }
+        .modal-body ul { padding-left: 18px; margin: 10px 0 0; }
+        .modal-footer {
+            padding: 16px 24px 24px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-secondary {
+            background: #ffffff;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .btn-secondary:hover { background: var(--primary-color); color: #fff; }
+
+        /* Promo Banner */
+        .client-promo {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .client-promo.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .promo-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .promo-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .client-footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* Outline Primary Button */
+        .btn-outline-primary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .btn-outline-primary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .client-welcome h1 {
+                font-size: 2rem;
+            }
+
+            .client-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .client-tab-btn {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 10px;
+            }
+
+            .client-promo {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .promo-text {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="client-header">
+        <div class="container">
+            <nav class="client-nav">
+                <div class="client-logo">
+                    <img src="RGZ.jpg" alt="RGZ Logo">
+                    <span style="font-weight: bold; color: red;">RGZ SARL</span>
+
+                </div>
+                <div class="client-menu">
+                    <a href="index.html" class="btn">Retour au site</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="client-main">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="client-welcome">
+                <h1>Bienvenue dans votre Espace Client</h1>
+                <p>Découvrez nos offres adaptées à vos besoins, avec des solutions internet haut débit pour particuliers et professionnels.</p>
+            </section>
+
+            <!-- Pricing Tabs -->
+            <div class="client-tabs">
+                <button class="client-tab-btn active" data-tab="home">HOME</button>
+                <button class="client-tab-btn" data-tab="business">BUSINESS</button>
+            </div>
+
+            <!-- Home Pricing -->
+            <div id="home" class="client-tab-content active">
+                <div class="pricing-table">
+                    <!-- Home 20Mbps -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div class="pricing-speed">20 Mbps</div>
+                            <div class="pricing-price">14 900 FCFA/mois</div>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Appels gratuits du fixe vers les fixes et vers 1 Numéro Mobile CELTIIS</li>
+                                <li><i class="fas fa-check"></i> Débit Up (Max) 5 Méga</li>
+                                <li><i class="fas fa-check"></i> Support technique 8h-20h</li>
+                                <li><i class="fas fa-check"></i> Installation rapide</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="index.html#contact" class="btn">Choisir cette offre</a>
+                        </div>
+                    </div>
+
+                    <!-- Home 50Mbps -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div class="pricing-speed">50 Mbps</div>
+                            <div class="pricing-price">24 900 FCFA/mois</div>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Appels gratuits du fixe vers les fixes et vers 2 Numéro Mobile CELTIIS</li>
+                                <li><i class="fas fa-check"></i> Débit Up (Max) 10 Méga</li>
+                                <li><i class="fas fa-check"></i> Support technique 8h-20h</li>
+                                <li><i class="fas fa-check"></i> Routeur Wi-Fi inclus</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="index.html#contact" class="btn">Choisir cette offre</a>
+                        </div>
+                    </div>
+
+                    <!-- Home 70Mbps -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div class="pricing-speed">70 Mbps</div>
+                            <div class="pricing-price">39 900 FCFA/mois</div>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Appels gratuits du fixe vers les fixes et vers 2 Numéro Mobile CELTIIS</li>
+                                <li><i class="fas fa-check"></i> Débit Up (Max) 12 Méga</li>
+                                <li><i class="fas fa-check"></i> Support technique 8h-20h</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="index.html#contact" class="btn">Choisir cette offre</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Pricing -->
+            <div id="business" class="client-tab-content">
+                <div class="pricing-table">
+                    <!-- Business 25Mbps -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div class="pricing-speed">25 Mbps</div>
+                            <div class="pricing-price">19 900 FCFA/mois</div>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Débit Up (Max) 5 Méga</li>
+                                <li><i class="fas fa-check"></i> Bonnus appel 2500 FTTC sur la SIM Celtiis de souscription du client</li>
+                                <li><i class="fas fa-check"></i> Gratuité des appels entre le numéro favori et la ligne fixe</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="index.html#contact" class="btn">Choisir cette offre</a>
+                        </div>
+                    </div>
+
+                    <!-- Business 50Mbps -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div class="pricing-speed">50 Mbps</div>
+                            <div class="pricing-price">24 900 FCFA/mois</div>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Débit Up (Max) 10 Méga</li>
+                                <li><i class="fas fa-check"></i> Forfait de 2500 FTTC Bloqué</li>
+                                <li><i class="fas fa-check"></i> Un poste téléphonique fixe</li>
+                                <li><i class="fas fa-check"></i> Bonnus appel 2500 FTTC sur la SIM Celtiis de souscription du client</li>
+                                <li><i class="fas fa-check"></i> Illimité vers un numéro mobile</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="index.html#contact" class="btn">Choisir cette offre</a>
+                        </div>
+                    </div>
+
+                    <!-- Business 90Mbps -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div class="pricing-speed">80 Mbps</div>
+                            <div class="pricing-price">39 900 FCFA/mois</div>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Débit Up (Max) 15 Méga</li>
+                                <li><i class="fas fa-check"></i> Forfait de 5000 FTTC Bloqué</li>
+                                <li><i class="fas fa-check"></i> Un poste téléphonique fixe</li>
+                                <li><i class="fas fa-check"></i> Bonnus appel 2500 FTTC sur la SIM Celtiis de souscription du client</li>
+                                <li><i class="fas fa-check"></i> Illimité vers un numéro mobile</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="index.html#contact" class="btn">Choisir cette offre</a>
+                        </div>
+                    </div>
+
+                    <!-- Business 150Mbps -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div class="pricing-speed">150 Mbps</div>
+                            <div class="pricing-price">69 900 FCFA/mois</div>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Débit Up (Max) 15 Méga</li>
+                                <li><i class="fas fa-check"></i> Forfait de 10000 FTTC Bloqué</li>
+                                <li><i class="fas fa-check"></i> Un poste téléphonique fixe</li>
+                                <li><i class="fas fa-check"></i> Illimité vers tous les numéros Fixe Celtiis</li>
+                                <li><i class="fas fa-check"></i> Illimité vers deux numéros mobiles</li>
+                                <li><i class="fas fa-check"></i> Pocket 4G avec un forfait de 5Go pour assurer le back up</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="index.html#contact" class="btn">Choisir cette offre</a>
+                        </div>
+                    </div>
+
+                    <!-- Business 200Mbps -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <div class="pricing-speed">200 Mbps</div>
+                            <div class="pricing-price">99 900 FCFA/mois</div>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check"></i> Débit Up (Max) 20 Méga</li>
+                                <li><i class="fas fa-check"></i> Forfait de 15000 FTTC Bloqué</li>
+                                <li><i class="fas fa-check"></i> Un poste téléphonique fixe</li>
+                                <li><i class="fas fa-check"></i> Illimité vers tous les numéros Fixe Celtiis</li>
+                                <li><i class="fas fa-check"></i> Illimité vers trois numéros mobiles</li>
+                                <li><i class="fas fa-check"></i> Pocket 4G avec un forfait de 10Go pour assurer le back up</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="index.html#contact" class="btn">Choisir cette offre</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promo Banner -->
+            <div class="client-promo">
+                <div class="promo-text">
+                    <h2>Offre Spéciale !</h2>
+                    <p>Pour les offres Fibre Office Max et Méga, les frais d'accès au services(FAS) sont de 24000 FCFA TTC. </p>
+                    <p>Frais d'installation à seulement 10 000 FCFA avec 1 mois de connexion offert pour toute souscription.</p>
+                </div>
+                <button class="btn btn-outline-primary" id="promoMoreBtn" type="button">En savoir plus</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal: Offre Spéciale -->
+    <div class="modal-overlay" id="promoModal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-title">Détails de l’offre spéciale</span>
+                <button class="modal-close" aria-label="Fermer">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Profitez de notre offre promotionnelle limitée sur les formules Fibre Office Max et Méga.</p>
+                <ul>
+                    <li><strong>Frais d’accès aux services (FAS)</strong> : 24 000 FCFA TTC</li>
+                    <li><strong>Frais d’installation</strong> : 10 000 FCFA avec <strong>1 mois offert sur tout les offres</strong></li>
+                    <li><strong>Éligibilité</strong> : sous réserve de couverture dans votre zone</li>
+                    <li><strong>Délai d’installation</strong> : 10 à 15 jours ouvrables après validation</li>
+                    <li><strong>Assistance</strong> : support prioritaire commercial et technique</li>
+                </ul>
+                <p>Pour souscrire ou obtenir un devis personnalisé, contactez-nous.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="index.html#contact" class="btn">Souscrire maintenant</a>
+                <a href="tel:+2290162000062" class="btn btn-secondary">Nous appeler</a>
+                <button type="button" class="btn btn-secondary modal-close">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="client-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Mentions légales</a>
+                <a href="#">CGV</a>
+                <a href="#">Politique de confidentialité</a>
+                <a href="#">Contact</a>
+            </div>
+            <p>&copy; 2025 RGZ SARL. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab Switching
+            const tabBtns = document.querySelectorAll('.client-tab-btn');
+            const tabContents = document.querySelectorAll('.client-tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons and contents
+                    tabBtns.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    this.classList.add('active');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // Animate elements on scroll
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.client-welcome, .pricing-card, .client-promo');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.classList.add('visible');
+                    }
+                });
+            };
+
+            // Promo modal (En savoir plus)
+            (function initPromoModal(){
+                const openBtn = document.getElementById('promoMoreBtn');
+                const overlay = document.getElementById('promoModal');
+                if (!openBtn || !overlay) return;
+
+                const closeModal = () => {
+                    overlay.classList.remove('active');
+                    overlay.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                };
+
+                const openModal = () => {
+                    overlay.classList.add('active');
+                    overlay.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                };
+
+                openBtn.addEventListener('click', openModal);
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) closeModal();
+                });
+                overlay.querySelectorAll('.modal-close').forEach(el => el.addEventListener('click', closeModal));
+            })();
+
+            // Initialize animations
+            window.addEventListener('load', animateOnScroll);
+            window.addEventListener('scroll', animateOnScroll);
+        });
+    </script>
+</body>
+</html>
